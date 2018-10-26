@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CrossLayerHelpers" Version="1.0.0" />
+    <PackageReference Include="CrossLayerHelpers" Version="1.1.0" />
     <PackageReference Include="MyDomainValidator" Version="1.1.0" />
   </ItemGroup>
 

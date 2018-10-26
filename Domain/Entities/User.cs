@@ -7,7 +7,7 @@ namespace Domain.Entities
 	{
 		public override void Validate()
 		{
-			throw new NotImplementedException();
+			
 		}
 	}
 }

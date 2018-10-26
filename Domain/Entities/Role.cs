@@ -3,11 +3,11 @@ using System;
 
 namespace Domain.Entities
 {
-	public class Roles : BaseEntity
+	public class Role : BaseEntity
 	{
 		public override void Validate()
 		{
-			throw new NotImplementedException();
+			
 		}
 	}
 }

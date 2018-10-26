@@ -5,10 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Enumerators\**" />
     <Compile Remove="Filters\**" />
     <Compile Remove="Results\**" />
+    <EmbeddedResource Remove="Enumerators\**" />
     <EmbeddedResource Remove="Filters\**" />
     <EmbeddedResource Remove="Results\**" />
+    <None Remove="Enumerators\**" />
     <None Remove="Filters\**" />
     <None Remove="Results\**" />
   </ItemGroup>
@@ -16,10 +19,6 @@
   <ItemGroup>
     <PackageReference Include="MyDomainValidator" Version="1.1.0" />
     <PackageReference Include="MyValueObjectsCollection" Version="0.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Enumerators\" />
   </ItemGroup>
 
 </Project>
