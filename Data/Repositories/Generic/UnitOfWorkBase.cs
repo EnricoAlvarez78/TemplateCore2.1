@@ -2,7 +2,7 @@
 using Domain.Interfaces.Repositories.Generic;
 using System.Threading.Tasks;
 
-namespace Data.Generic
+namespace Data.Repositories.Generic
 {
     public partial class UnitOfWork : IUnitOfWork
     {

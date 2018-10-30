@@ -1,6 +1,7 @@
 ﻿using Data.Interfaces;
 using DomainValidator.Notifications;
 using Microsoft.EntityFrameworkCore;
+using Shared.Interfaces;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -9,20 +10,25 @@ namespace Data.EFContext
 {
     public partial class SqlServerContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //var connectionStrings = GetConnectionStringsHelper.GetConnectionStrings();
+		private readonly IAppSettings _appSettings;
 
-            //var connStr = connectionStrings["DefaultConnectionString"];
+		public SqlServerContext(IAppSettings appSettings)
+		{
+			_appSettings = appSettings;
+		}
 
-            //if (!optionsBuilder.IsConfigured && !string.IsNullOrEmpty(connStr))
-            //{
-            //    optionsBuilder.EnableSensitiveDataLogging();
-            //    optionsBuilder.UseSqlServer(connStr, b => b.UseRowNumberForPaging());
-            //}
-        }
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{			
+			var connStr = _appSettings.GetConnetionString();
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+			if (!optionsBuilder.IsConfigured && !string.IsNullOrEmpty(connStr.Value))
+			{
+				optionsBuilder.EnableSensitiveDataLogging();
+				optionsBuilder.UseSqlServer(connStr.Value, b => b.UseRowNumberForPaging());
+			}
+		}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Fazendo o mapeamento com o banco de dados
             //Pega todas as classes que estão implementando a interface IMapping

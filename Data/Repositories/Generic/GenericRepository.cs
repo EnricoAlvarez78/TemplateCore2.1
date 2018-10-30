@@ -10,7 +10,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Data.Generic
+namespace Data.Repositories.Generic
 {
     public abstract class GenericRepository<TEntity> : IDisposable, IGenericRepository<TEntity> where TEntity : BaseEntity
     {
