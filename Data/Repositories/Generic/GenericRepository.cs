@@ -64,23 +64,23 @@ namespace Data.Repositories.Generic
 
         public virtual async Task<IEnumerable<TEntity>> GetManyPaginatedAsync(GetPaginatedFilter filter = null, IEnumerable<string> includes = null)
         {
-            //IQueryable<TEntity> query = MountQuery(includes);
+			IQueryable<TEntity> query = MountQuery(includes);
 
-            //if (filter != null)
-            //{
-            //    if (filter.Filter.Any())
-            //        query = GenericFilterHelper<TEntity>.GenericFilter(query, filter.Filter);
+			if (filter != null)
+			{
+				if (filter.Filter.Any())
+					query = GenericFilterHelper<TEntity>.GenericFilter(query, filter.Filter);
 
-            //    if (filter.Sort != null && filter.Sort.Any())
-            //        query = GenericSortHelper<TEntity>.GenericSort(query, filter.Sort);
+				if (filter.Sort != null && filter.Sort.Any())
+					query = GenericSortHelper<TEntity>.GenericSort(query, filter.Sort);
 
-            //    if (filter.PageIndex != null && filter.PageIndex > 0 && filter.PageSize != null && filter.PageSize > 0)
-            //        query = query.Skip(filter.PageSize.GetValueOrDefault() * (filter.PageIndex.GetValueOrDefault() - 1)).Take(filter.PageSize.GetValueOrDefault());
-            //}
+				if (filter.PageIndex != null && filter.PageIndex > 0 && filter.PageSize != null && filter.PageSize > 0)
+					query = query.Skip(filter.PageSize.GetValueOrDefault() * (filter.PageIndex.GetValueOrDefault() - 1)).Take(filter.PageSize.GetValueOrDefault());
+			}
 
-            //return await query.AsNoTracking().ToListAsync();
+			return await query.AsNoTracking().ToListAsync();
 
-            throw new NotImplementedException();
+			throw new NotImplementedException();
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, IEnumerable<string> includes = null)
