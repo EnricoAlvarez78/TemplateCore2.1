@@ -3,7 +3,6 @@ using Data.EFContext;
 using Domain.Interfaces.Repositories.Generic;
 using LinqQueryHelpers;
 using Microsoft.EntityFrameworkCore;
-using Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories.Generic
 {
-    public abstract class GenericRepository<TEntity> : IDisposable, IGenericRepository<TEntity> where TEntity : BaseEntity
+	public abstract class GenericRepository<TEntity> : IDisposable, IGenericRepository<TEntity> where TEntity : class
     {
         protected readonly SqlServerContext _context;
 
@@ -79,8 +78,6 @@ namespace Data.Repositories.Generic
 			}
 
 			return await query.AsNoTracking().ToListAsync();
-
-			throw new NotImplementedException();
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, IEnumerable<string> includes = null)

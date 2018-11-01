@@ -1,5 +1,4 @@
 ﻿using CrossLayerHelpers.Filters;
-using Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.Repositories.Generic
 {
-	public interface IGenericRepository<TEntity> where TEntity : BaseEntity
+	public interface IGenericRepository<TEntity> where TEntity : class
 	{
 		IEnumerable<string> IncludeCollection { get; set; }
 
