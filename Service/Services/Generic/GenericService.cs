@@ -195,14 +195,12 @@ namespace Service.Services.Generic
 		{
 			try
 			{
-				//var entities = await _specificRepository.GetManyPaginatedAsync(filter, includes);
-				//var totalAmount = await _specificRepository.CountAsync(filter);
+				var entities = await _specificRepository.GetManyPaginatedAsync(filter, includes);
+				var totalAmount = await _specificRepository.CountAsync(filter);
 
-				//return entities != null && totalAmount >= 0 ?
-				//		GetManyResult<TEntity>.SuccessResponse(entities, totalAmount) :
-				//		GetManyResult<TEntity>.BadRequestResponse();
-
-				return GetManyResult<TEntity>.BadRequestResponse();
+				return entities != null && totalAmount >= 0 ?
+						GetManyResult<TEntity>.SuccessResponse(entities, totalAmount) :
+						GetManyResult<TEntity>.BadRequestResponse();
 			}
 			catch (Exception ex)
 			{
