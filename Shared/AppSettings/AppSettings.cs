@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MyValueObjectsCollection.Common;
 using Shared.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace Shared.AppSettings

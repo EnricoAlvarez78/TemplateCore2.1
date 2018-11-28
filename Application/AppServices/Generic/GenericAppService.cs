@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.AppServices.Generic
@@ -211,12 +210,11 @@ namespace Application.AppServices.Generic
 		{
 			try
 			{
-				//var response = await _specificRepository.CountAsync(filter);
+				var response = await _service.Count(filter);
 
-				//return response >= default(long) ?
-				//		GetCountResult.SuccessResponse(response) :
-				//		GetCountResult.BadRequestResponse();
-				throw new NotImplementedException();
+				return GetCountResult.WasSuccessful(response) ?
+						GetCountResult.SuccessResponse(response.Amount.Value) :
+						GetCountResult.BadRequestResponse();
 			}
 			catch (Exception ex)
 			{
@@ -228,12 +226,11 @@ namespace Application.AppServices.Generic
 		{
 			try
 			{
-				//var response = await _specificRepository.CountAsync(filter);
+				var response = await _service.Count(filter);
 
-				//return response >= default(long) ?
-				//		GetCountResult.SuccessResponse(response) :
-				//		GetCountResult.BadRequestResponse();
-				throw new NotImplementedException();
+				return GetCountResult.WasSuccessful(response) ?
+						GetCountResult.SuccessResponse(response.Amount.Value) :
+						GetCountResult.BadRequestResponse();
 			}
 			catch (Exception ex)
 			{
