@@ -22,11 +22,7 @@ namespace Mvc
 		public void ConfigureServices(IServiceCollection services)
 		{
 			//Configure services
-			services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
-			services.Configure<Settings>(Configuration.GetSection("Settings"));
-			services.AddOptions();
-
-			services.AddTransient<IAppSettings, AppSettings>();
+			SetAppSettings(services);
 
 			services.Configure<CookiePolicyOptions>(options =>
 			{
@@ -37,6 +33,7 @@ namespace Mvc
 
 			IoC.IoCConfiguration.Configure(services);
 
+			services.AddOptions();
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
 
@@ -66,6 +63,13 @@ namespace Mvc
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");
 			});
+		}
+
+		private void SetAppSettings(IServiceCollection services)
+		{
+			services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+			services.Configure<Settings>(Configuration.GetSection("Settings"));
+			services.AddTransient<IAppSettings, AppSettings>();
 		}
 	}
 }
