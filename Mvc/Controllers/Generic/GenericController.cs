@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CrossLayerHelpers.Enumerators;
 using CrossLayerHelpers.Filters;
 using CrossLayerHelpers.Results;
@@ -13,6 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Mvc.Models;
 using Shared.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Mvc.Controllers.Generic
 {
@@ -136,7 +136,6 @@ namespace Mvc.Controllers.Generic
 
 				TEntity domain = await MapToEntity(model);
 
-				//((IGenericService<TEntity>)_service).UsuarioLogado = _usuarioLogadoBase;
 				var response = await ((IGenericService<TEntity>)_service).Add(domain);
 
 				if (response.Success)
@@ -205,7 +204,6 @@ namespace Mvc.Controllers.Generic
 
 				var domain = await MapToEntity(model);
 
-				//((IGenericService<TEntity>)_service).UsuarioLogado = _usuarioLogadoBase;
 				var response = await ((IGenericService<TEntity>)_service).Update(domain);
 
 				if (response.Success)
@@ -315,7 +313,6 @@ namespace Mvc.Controllers.Generic
 
 			try
 			{
-				//((IGenericService<TEntity>)_service).UsuarioLogado = _usuarioLogadoBase;
 				var response = await ((IGenericService<TEntity>)_service).Remove(id);
 
 				if (!response.Success)
@@ -379,14 +376,12 @@ namespace Mvc.Controllers.Generic
 
 		#region Auxiliary Methods
 
-		protected virtual async Task ExecuteBeforeRenderForm(TViewModel model) { }
+		protected virtual async Task ExecuteBeforeRenderForm(TViewModel model) { await Task.FromResult(0); }
 
-		protected virtual async Task ExecuteToReloadModel(TViewModel model, ModelStateDictionary modelState) { }
+		protected virtual async Task ExecuteToReloadModel(TViewModel model, ModelStateDictionary modelState) { await Task.FromResult(0); }
 
-		protected virtual Task<TEntity> MapToEntity(TViewModel model)
-		{
-			return Task.FromResult(Mapper.Map<TViewModel, TEntity>(model));
-		}
+		protected virtual Task<TEntity> MapToEntity(TViewModel model) 
+			=> Task.FromResult(Mapper.Map<TViewModel, TEntity>(model));
 
 		protected virtual void SetDefaultActionMessages(string name, bool maleGender = true)
 		{
