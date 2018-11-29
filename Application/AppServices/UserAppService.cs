@@ -1,11 +1,14 @@
-﻿using Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Application.AppServices.Generic;
+using Application.Interfaces;
+using Domain.Entities;
+using Domain.Interfaces.Services;
 
 namespace Application.AppServices
 {
-	public class UserAppService : IUserAppService
+	public class UserAppService : GenericAppService<User>, IUserAppService
 	{
+		public UserAppService(IUserService service) : base(service)
+		{
+		}
 	}
 }

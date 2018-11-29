@@ -21,7 +21,7 @@ namespace Mvc
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			// Configure services
+			//Configure services
 			services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 			services.Configure<Settings>(Configuration.GetSection("Settings"));
 			services.AddOptions();
@@ -34,6 +34,8 @@ namespace Mvc
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
+
+			IoC.IoCConfiguration.Configure(services);
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
