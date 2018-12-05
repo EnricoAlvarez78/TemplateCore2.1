@@ -10,23 +10,27 @@ namespace Data.EFContext
 {
     public partial class SqlServerContext : DbContext
     {
-		private readonly IAppSettings _appSettings;
+		//private readonly IAppSettings _appSettings;
 
-		public SqlServerContext(IAppSettings appSettings)
+		public SqlServerContext(DbContextOptions<SqlServerContext> options) : base(options)
 		{
-			_appSettings = appSettings;
 		}
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{			
-			var connStr = _appSettings.GetConnetionString();
+		//public SqlServerContext(IAppSettings appSettings)
+		//{
+		//	_appSettings = appSettings;
+		//}
 
-			if (!optionsBuilder.IsConfigured && !string.IsNullOrEmpty(connStr.Value))
-			{
-				optionsBuilder.EnableSensitiveDataLogging();
-				optionsBuilder.UseSqlServer(connStr.Value, b => b.UseRowNumberForPaging());
-			}
-		}
+		//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		//{			
+		//	var connStr = _appSettings.GetConnetionString();
+
+		//	if (!optionsBuilder.IsConfigured && !string.IsNullOrEmpty(connStr.Value))
+		//	{
+		//		optionsBuilder.EnableSensitiveDataLogging();
+		//		optionsBuilder.UseSqlServer(connStr.Value, b => b.UseRowNumberForPaging());
+		//	}
+		//}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

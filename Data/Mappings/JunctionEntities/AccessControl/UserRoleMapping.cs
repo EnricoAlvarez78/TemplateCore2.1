@@ -9,17 +9,19 @@ namespace Data.Mappings.JunctionEntities.AccessControl
 	{
 		public void Configure(EntityTypeBuilder<UserRole> builder)
 		{
+			builder.ToTable("UserRole", "AccessControl");
+
+			builder.HasKey(e => new { e.IdUser, e.IdRole });
+
 			builder.HasOne(d => d.User)
-							.WithMany(p => p.Roles)
-							.HasForeignKey(d => d.IdUser)
-							.OnDelete(DeleteBehavior.ClientSetNull)
-							.HasConstraintName("FK_UserRole_User");
+				   .WithMany(p => p.UserRoles)
+				   .HasForeignKey(d => d.IdUser)
+				   .HasConstraintName("FK_UserRole_User");
 
 			builder.HasOne(d => d.Role)
-				.WithMany(p => p.Users)
-				.HasForeignKey(d => d.IdRole)
-				.OnDelete(DeleteBehavior.ClientSetNull)
-				.HasConstraintName("FK_UserRole_Role");
+				   .WithMany(p => p.UserRoles)
+				   .HasForeignKey(d => d.IdRole)
+				   .HasConstraintName("FK_UserRole_Role");
 		}
 	}
 }

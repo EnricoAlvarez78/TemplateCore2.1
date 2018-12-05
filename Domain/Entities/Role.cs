@@ -10,7 +10,7 @@ namespace Domain.Entities
 
 		public bool Status { get; private set; }
 
-		public ICollection<UserRole> Users { get;  set; }
+		public ICollection<UserRole> UserRoles { get;  set; }
 
 		public override void Validate() { }
 	}

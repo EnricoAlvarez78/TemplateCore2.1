@@ -13,7 +13,7 @@ namespace Domain.Entities
 		public string Email { get; private set; }
 		public bool Status { get; private set; }
 
-		public ICollection<UserRole> Roles { get;  set; }
+		public ICollection<UserRole> UserRoles { get; set; }
 
 		public override void Validate()
 		{

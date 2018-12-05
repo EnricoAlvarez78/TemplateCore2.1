@@ -9,7 +9,7 @@ namespace Data.Mappings.AccessControl
 	{
 		public void Configure(EntityTypeBuilder<Role> builder)
 		{
-			builder.ToTable("User", "AccessControl");
+			builder.ToTable("Role", "AccessControl");
 
 			builder.HasKey(e => e.Id);
 
