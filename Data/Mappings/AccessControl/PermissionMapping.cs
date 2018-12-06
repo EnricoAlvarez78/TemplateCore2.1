@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Data.Mappings.AccessControl
 {
-	public class RoleMapping : IEntityTypeConfiguration<Role>, IMapping
+	public class PermissionMapping : IEntityTypeConfiguration<Permission>, IMapping
 	{
-		public void Configure(EntityTypeBuilder<Role> builder)
+		public void Configure(EntityTypeBuilder<Permission> builder)
 		{
-			builder.ToTable("Role", "AccessControl");
+			builder.ToTable("Permission", "AccessControl");
 
 			builder.HasKey(e => e.Id);
 
