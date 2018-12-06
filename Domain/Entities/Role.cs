@@ -11,7 +11,7 @@ namespace Domain.Entities
 		public string Name { get; private set; }
 		public bool Status { get; private set; }
 		public DateTime CreationDate { get; private set; }
-		public ICollection<UserRole> UserRoles { get;  set; }
+		public ICollection<UserRole> UserRoles { get; private set; } = new HashSet<UserRole>();
 
 		public Role(string name, bool status, DateTime creationDate)
 		{

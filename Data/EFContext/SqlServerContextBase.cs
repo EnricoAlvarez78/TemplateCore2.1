@@ -47,10 +47,10 @@ namespace Data.EFContext
             }
 
             modelBuilder.Ignore<Notification>();
-
-			new DatabaseSeedInitializer(modelBuilder);
-
+			
 			base.OnModelCreating(modelBuilder);
-        }
+
+			new DatabaseSeedInitializer(modelBuilder);			
+		}
     }
 }

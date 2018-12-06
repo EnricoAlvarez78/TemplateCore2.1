@@ -3,7 +3,6 @@ using DomainValidator.Validations;
 using Shared.Entities;
 using System;
 using System.Collections.Generic;
-using System.Data;
 
 namespace Domain.Entities
 {
@@ -15,7 +14,7 @@ namespace Domain.Entities
 		public bool Status { get; private set; }
 		public DateTime CreationDate { get; private set; }
 
-		public ICollection<UserRole> UserRoles { get; set; }
+		public ICollection<UserRole> UserRoles { get; private set; } = new HashSet<UserRole>();
 
 		public User(string name, string password, string email, bool status, DateTime creationDate)
 		{
@@ -28,12 +27,24 @@ namespace Domain.Entities
 			Validate();
 		}
 
-		public User(string name, string password, string email, bool status, DateTime creationDate, ICollection<UserRole> userRoles) 
+		public User(string name, string password, string email, bool status, DateTime creationDate, ICollection<UserRole> userRoles)
 			: this(name, password, email, status, creationDate)
 		{
 			UserRoles = userRoles;
 
 			AddNotifications(new Validation().IsNotNullOrEmpty(UserRoles, "Usuario.UserRoles"));
+		}
+
+		public void UpdateUser(string name, string password, string email, bool status, DateTime creationDate, ICollection<UserRole> userRoles)			
+		{
+			Name = name;
+			Password = password;
+			Email = email;
+			Status = status;
+			CreationDate = creationDate;
+			UserRoles = userRoles;
+
+			Validate();
 		}
 
 		public override void Validate()

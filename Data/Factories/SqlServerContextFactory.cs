@@ -14,14 +14,10 @@ namespace Data.Factories
 													.SetBasePath(Directory.GetCurrentDirectory())
 													.AddJsonFile("appsettings.json")
 													.Build();
-
-			var builder = new DbContextOptionsBuilder<SqlServerContext>();
-
-			var connectionString = configuration.GetConnectionString("DefaultConnectionString");
-
-			builder.UseSqlServer(connectionString);
-
+			
+			var builder = new DbContextOptionsBuilder<SqlServerContext>().EnableSensitiveDataLogging()
+																		 .UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"));
 			return new SqlServerContext(builder.Options);
-		}
+		}		
 	}
 }
