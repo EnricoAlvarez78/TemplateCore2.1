@@ -9,7 +9,7 @@ namespace Shared.Entities
 
 		public BaseEntity() { }
 
-		public BaseEntity(Guid id) => Id = id;
+		public BaseEntity(Guid id) => Id = id == null || id.Equals(Guid.Empty) ? Guid.NewGuid() : id;
 
 		public abstract void Validate();
 	}

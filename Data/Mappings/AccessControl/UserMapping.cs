@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace Data.Mappings.AccessControl
 {
@@ -21,7 +22,7 @@ namespace Data.Mappings.AccessControl
 
 			builder.Property(e => e.Email).IsRequired().HasMaxLength(120).IsUnicode(false);
 
-			builder.Property(e => e.Status).HasDefaultValueSql("((1))");
+			builder.Property(e => e.Status).HasDefaultValueSql("((1))");						
 		}
 	}
 }

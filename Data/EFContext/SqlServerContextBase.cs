@@ -1,4 +1,5 @@
-﻿using Data.Interfaces;
+﻿using Data.Factories;
+using Data.Interfaces;
 using DomainValidator.Notifications;
 using Microsoft.EntityFrameworkCore;
 using Shared.Interfaces;
@@ -47,7 +48,9 @@ namespace Data.EFContext
 
             modelBuilder.Ignore<Notification>();
 
-            base.OnModelCreating(modelBuilder);
+			new DatabaseSeedInitializer(modelBuilder);
+
+			base.OnModelCreating(modelBuilder);
         }
     }
 }
