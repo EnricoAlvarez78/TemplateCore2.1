@@ -28,8 +28,7 @@
 		"node_modules",
 		"bower_components",
 		"composer.json",
-		"documentation",
-		"wwwroot/lib"
+		"documentation"
 	],
 	"dependencies": {
 		"bootstrap-slider": "*",
