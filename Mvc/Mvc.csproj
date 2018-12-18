@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -18,5 +18,17 @@
     <ProjectReference Include="..\IoC\IoC.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
+	
+<ItemGroup>	<!--Publish only .min files -->
+	<Content Update="wwwroot/css/shared/*.css" CopyToPublishDirectory="Never" />
+	<Content Update="wwwroot/css/shared/*.min.css" CopyToPublishDirectory="Always" />
+	<Content Update="wwwroot/css/areas/**/*.css" CopyToPublishDirectory="Never" />
+	<Content Update="wwwroot/css/areas/**/*.min.css" CopyToPublishDirectory="Always" />
+	
+	<Content Update="wwwroot/js/shared/*.js" CopyToPublishDirectory="Never" />
+	<Content Update="wwwroot/js/shared/*.min.js" CopyToPublishDirectory="Always" />
+	<Content Update="wwwroot/js/areas/**/*.js" CopyToPublishDirectory="Never" />
+	<Content Update="wwwroot/js/areas/**/*.min.js" CopyToPublishDirectory="Always" />
+</ItemGroup>
 
 </Project>
