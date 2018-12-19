@@ -1,6 +1,7 @@
 ﻿"use strict";
-function dataTableInit(path, params) {
-	var obj = {
+function dataTable(tableId, serverPath, params, columns) {
+	$('#' + tableId).DataTable().destroy();
+	$('#' + tableId).DataTable({
 		processing: true,
 		serverSide: true,
 		filter: true,
@@ -8,21 +9,19 @@ function dataTableInit(path, params) {
 		pagingType: "full_numbers",
 		language: languagePtBr(),
 		ajax: {
-			url: path,
+			url: serverPath,
 			type: "POST",
 			datatype: "json",
 			data: {
 				model: params
 			},
 			dataSrc: function (response) {
-				//console.log(response.data);
 				return response.data;
 			},
 			error: function (xhr, error, thrown) {
-				errorAjaxHandler(xhr, status, error);
+				//errorAjaxHandler(xhr, status, error);
 			}
-		}
-	};
-
-    return obj;
+		},
+		columns: columns
+	});
 }
