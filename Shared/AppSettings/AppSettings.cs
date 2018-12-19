@@ -18,7 +18,7 @@ namespace Shared.AppSettings
 
 		public ConnetionString GetConnetionString()
 		{
-			return new ConnetionString(_connectionStrings.Value.ToString());
+			return new ConnetionString(_connectionStrings.Value.DefaultConnectionString);
 		}
 
 		public Dictionary<string, string> GetSettings()

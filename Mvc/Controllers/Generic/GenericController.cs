@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.Interfaces.Generic;
+using AutoMapper;
 using CrossLayerHelpers.Enumerators;
 using CrossLayerHelpers.Filters;
 using CrossLayerHelpers.Results;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace Mvc.Controllers.Generic
 {
-	[Authorize]
+	//[Authorize]
 	public abstract class GenericController<TEntity, TViewModel> : BaseController
 		where TEntity : BaseEntity
 		where TViewModel : class
@@ -228,7 +229,7 @@ namespace Mvc.Controllers.Generic
 		#endregion
 
 		#region Asynchronous Calls
-
+		
 		[HttpPost]
 		public virtual async Task<IActionResult> Grid()
 		{
@@ -265,7 +266,7 @@ namespace Mvc.Controllers.Generic
 													filterList,
 													sortDictionary);
 
-				var result = await ((IGenericService<TEntity>)_service).GetManyPaginated(filter);
+				var result = await ((IGenericAppService<TEntity>)_service).GetManyPaginated(filter);
 
 				if (!result.Success)
 				{

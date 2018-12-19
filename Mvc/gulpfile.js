@@ -11,6 +11,7 @@ var deps = {
 	},
 	"bootstrap": {
 		"dist/css/bootstrap.min.css": "css/",
+		"dist/css/bootstrap.min.css.map": "css/",
 		"dist/js/bootstrap.min.js": "js/"
 	},
 	"font-awesome": {

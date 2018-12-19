@@ -10,12 +10,18 @@
 				<tr>
 					<th>@Html.DisplayNameFor(model => model.Name)</th>
 					<th>@Html.DisplayNameFor(model => model.Email)</th>
-					<th><a class="btn btn-success text-center" asp-action="Create" title="Incluir usuário"><span class="glyphicon glyphicon-plus"></span></a></th>
+					<th>@Html.DisplayNameFor(model => model.Status)</th>
+					<th>@Html.DisplayNameFor(model => model.CreationDate)</th>
+					<th><a class="btn btn-success text-center" asp-action="Create" title="Incluir usuário"><span class="fa fa-plus"></span></a></th>
 				</tr>
 			</thead>
 		</table>
 	</div>
 </div>
+
+@section Styles {
+	
+}
 
 @section Scripts {
 	<partial name="_DataGridScriptsPartial" />

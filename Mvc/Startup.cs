@@ -31,6 +31,7 @@ namespace Mvc
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
+			AutoMapper.AutoMapperConfig.RegisterMappings();
 			IoC.IoCConfiguration.Configure(services);
 
 			services.AddOptions();
