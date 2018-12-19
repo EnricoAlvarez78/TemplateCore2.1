@@ -25,6 +25,13 @@ var deps = {
 	},
 	"ionicons": {
 		"dist/css/ionicons.min.css": "css/"
+	},
+	"datatables.net": {
+		"js/jquery.dataTables.min.js": "js/"
+	},
+	"datatables.net-bs": {
+		"js/dataTables.bootstrap.min.js": "js/",
+		"css/dataTables.bootstrap.min.css": "css/"		
 	}
 };
 

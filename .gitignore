@@ -28,7 +28,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Oo]ut/
-[Vv]endor/
+[Ll]ib/
 msbuild.log
 msbuild.err
 msbuild.wrn
