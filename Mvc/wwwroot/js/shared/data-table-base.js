@@ -1,5 +1,6 @@
 ﻿"use strict";
 function dataTable(tableId, serverPath, params, columns) {
+	removeSharp(tableId);	
 	$('#' + tableId).DataTable().destroy();
 	$('#' + tableId).DataTable({
 		processing: true,
@@ -12,7 +13,7 @@ function dataTable(tableId, serverPath, params, columns) {
 			url: serverPath,
 			type: "POST",
 			datatype: "json",
-			data: {
+			data: { 
 				model: params
 			},
 			dataSrc: function (response) {
@@ -24,4 +25,11 @@ function dataTable(tableId, serverPath, params, columns) {
 		},
 		columns: columns
 	});
+}
+
+function removeSharp(tableId) {
+	if (tableId.search("#") > -1) {
+		tableId = tableId.replace(/#/g, '');
+	}
+	return tableId;
 }
